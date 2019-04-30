@@ -9,6 +9,7 @@ import time
 
 
 chrome_options = webdriver.ChromeOptions()
+# Comment out the below line to view the window as the script is working. Notice which extension is being downloaded (that's the 3.41.0_0 folder)
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-gpu')
@@ -21,6 +22,7 @@ driver = webdriver.Chrome(chrome_options=chrome_options, executable_path = './ch
 print('')
 print('')
 
+# timeframe can be 'hour', 'day', 'month', 'year'
 timeframe = 'month'
 
 driver.get('https://www.reddit.com/top?t=' + timeframe)

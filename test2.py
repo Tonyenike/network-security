@@ -23,21 +23,19 @@ print('')
 print('')
 
 # You can change this to 'hour', 'day', 'month', 'year'
-timeframe = 'month'
 
-driver.get('https://www.reddit.com/top?t=' + timeframe)
-
-time.sleep(1)
-
-info = driver.find_element_by_class_name('scrollerItem')
-
-getlinks = info.find_elements_by_css_selector('a') 
-
-text_subreddit = getlinks[1].get_attribute('innerHTML')
-text_user = getlinks[2].get_attribute('innerHTML')
-
-print('User ' + text_user + ' posted the top post of the ' + timeframe + ' in subreddit ' + text_subreddit)
+driver.get('https://week1-raddit.herokuapp.com/')
 
 time.sleep(1)
+
+info = driver.find_elements_by_class_name('row')
+
+for i in range(3):
+
+    getlinks = info[i].find_elements_by_css_selector('a') 
+
+    text_link = getlinks[0].get_attribute('innerHTML')
+
+    print(text_link)
 
 driver.quit()

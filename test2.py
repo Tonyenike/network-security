@@ -24,13 +24,13 @@ print('')
 
 # You can change this to 'hour', 'day', 'month', 'year'
 
-driver.get('https://week1-raddit.herokuapp.com/')
+driver.get('http://localhost:5104')
 
 time.sleep(1)
 
 info = driver.find_elements_by_class_name('row')
 
-for i in range(3):
+for i in range(len(info)):
 
     getlinks = info[i].find_elements_by_css_selector('a') 
 

@@ -24,7 +24,9 @@ print('')
 
 driver.get('http://localhost:3007/users/sign_in')
 
+print('sleeping')
 time.sleep(1)
+print('sleep complete')
 
 email_input = driver.find_element_by_id('user_email')
 email_input.send_keys("bot@gmail.com")
@@ -33,10 +35,19 @@ password_input = driver.find_element_by_id('user_password')
 password_input.send_keys("password")
 
 login_button = driver.find_element_by_name('commit')
+login_button.click()
 
 time.sleep(1)
 
 driver.get('http://localhost:3007/links/new')
 
+title_input = driver.find_element_by_id('link_title')
+title_input.send_keys("Definitely not a bot")
+
+link_input = driver.find_element_by_id('link_url')
+link_input.send_keys("https://i.kym-cdn.com/entries/icons/original/000/016/212/manning.png")
+
+save_button = driver.find_element_by_name('commit')
+save_button.click()
 
 driver.quit()

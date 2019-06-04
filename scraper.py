@@ -24,18 +24,34 @@ print('')
 
 # You can change this to 'hour', 'day', 'month', 'year'
 
-driver.get('http://localhost:3007')
+driver.get('http://flip2.engr.oregonstate.edu:3007')
 
 time.sleep(1)
 
 info = driver.find_elements_by_class_name('row')
 
+
+
 for i in range(len(info)):
 
     getlinks = info[i].find_elements_by_css_selector('a') 
 
-    text_link = getlinks[0].get_attribute('innerHTML')
+    thing =  info[i].find_elements_by_css_selector('small')
 
-    print(text_link)
+    text_link = getlinks[0].get_attribute('innerHTML')
+    text_up   = getlinks[2].get_attribute('text')
+    text_down = getlinks[3].get_attribute('text')
+    text_up = text_up.split('\n')[2]
+    text_down = text_down.split('\n')[2]
+
+    text_details = thing[0].get_attribute('innerHTML')
+
+    print("TITLE: " +  text_link)
+    print("DETAILS: " + text_details)
+    print("UPVOTES: " + text_up)
+    print("DOWNVOTES: " + text_down)
+
+    print('')
+    print('')
 
 driver.quit()

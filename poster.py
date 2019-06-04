@@ -22,20 +22,21 @@ driver = webdriver.Chrome(chrome_options=chrome_options, executable_path = './ch
 print('')
 print('')
 
-# You can change this to 'hour', 'day', 'month', 'year'
-
-driver.get('http://localhost:3007')
+driver.get('http://localhost:3007/users/sign_in')
 
 time.sleep(1)
 
-info = driver.find_elements_by_class_name('row')
+email_input = driver.find_element_by_id('user_email')
+email_input.send_keys("bot@gmail.com")
 
-for i in range(len(info)):
+password_input = driver.find_element_by_id('user_password')
+password_input.send_keys("password")
 
-    getlinks = info[i].find_elements_by_css_selector('a') 
+login_button = driver.find_element_by_name('commit')
 
-    text_link = getlinks[0].get_attribute('innerHTML')
+time.sleep(1)
 
-    print(text_link)
+driver.get('http://localhost:3007/links/new')
+
 
 driver.quit()
